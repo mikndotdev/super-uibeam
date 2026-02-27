@@ -1,44 +1,19 @@
-FROM oven/bun:1 AS builder
+FROM oven/bun:1 AS base
 WORKDIR /app
 
-COPY package.json bun.lock ./
+COPY . .
 
-COPY apps/frontend ./apps/frontend
-
-RUN bun install --frozen-lockfile
-
-WORKDIR /app/apps/frontend
+RUN bun i
 RUN bun run build
 
 FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
 
 RUN rm /etc/nginx/conf.d/default.conf
 
-RUN cat <<'EOF' > /etc/nginx/conf.d/default.conf
-server {
-    listen 80;
+RUN printf 'server {\n    listen 80;\n\n    location / {\n        root /usr/share/nginx/html;\n        index index.html;\n        try_files $uri $uri/ /index.html;\n    }\n\n    error_page 404 /404.html;\n    location = /404.html {\n        root /usr/share/nginx/html;\n        internal;\n    }\n\n    error_page 500 502 503 504 /50x.html;\n    location = /50x.html {\n        root /usr/share/nginx/html;\n        internal;\n    }\n}\n' > /etc/nginx/conf.d/default.conf
 
-    location / {
-        root /usr/share/nginx/html;
-        index index.html;
-        try_files $uri $uri/ /index.html;
-    }
-
-    error_page 404 /404.html;
-    location = /404.html {
-        root /usr/share/nginx/html;
-        internal;
-    }
-
-    error_page 500 502 503 504 /50x.html;
-    location = /50x.html {
-        root /usr/share/nginx/html;
-        internal;
-    }
-}
-EOF
-
-COPY --from=builder /app/apps/frontend/dist /usr/share/nginx/html
+COPY --from=base /app/apps/frontend/dist .
 
 EXPOSE 80
 
