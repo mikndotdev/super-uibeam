@@ -87,6 +87,6 @@ jobs:
 
       - name: Merge
         run: |
-          docker buildx imagetools create -t ghcr.io/${{ github.repository }}:latest \
-              ghcr.io/${{ github.repository }}:latest-amd \
-              ghcr.io/${{ github.repository }}:latest-arm
+          docker buildx imagetools create -t ghcr.io/${{ github.repository }}-frontend:latest \
+              ghcr.io/${{ github.repository }}-frontend:latest-amd \
+              ghcr.io/${{ github.repository }}-frontend:latest-arm
