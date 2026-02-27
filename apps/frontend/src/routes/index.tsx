@@ -101,7 +101,7 @@ function App() {
             </button>
           </a>
           <a
-            href={"https://github.com/maamokun/uibeam"}
+            href={"https://github.com/mikndotdev/super-uibeam"}
             rel={"nofollow noopener"}
             target={"_blank"}
           >
@@ -111,7 +111,7 @@ function App() {
             </button>
           </a>
           <a
-            href={"https://analytics.mikandev.com/projects/Q8Kt5OMbfhHd"}
+            href={"https://analytics.mikandev.com/projects/VF016wVTAihR"}
             rel={"nofollow noopener"}
             target={"_blank"}
           >

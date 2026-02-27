@@ -3,6 +3,8 @@ name: Build and Push Docker Image (Frontend)
 on:
   workflow_dispatch:
   push:
+    paths:
+      - "apps/frontend/**"
     branches:
       - main
 

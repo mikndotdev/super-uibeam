@@ -1,5 +1,7 @@
-import { RedisClient } from "bun";
+import { RedisClient, file } from "bun";
 import type { ServerWebSocket } from "bun";
+
+import loli from "./assets/loli.gif" with { type: "file" };
 
 const redis = new RedisClient(process.env.REDIS_URL!);
 
@@ -26,7 +28,10 @@ Bun.serve({
     if (server.upgrade(req)) {
       return;
     }
-    return new Response("Upgrade failed", { status: 500 });
+    return new Response(file(loli), {
+      headers: { "Content-Type": "image/gif" },
+      status: 500,
+    });
   },
   websocket: {
     async open(ws: ServerWebSocket) {

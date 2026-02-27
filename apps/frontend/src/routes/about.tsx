@@ -17,7 +17,7 @@ function App() {
             ただそれだけのサイトです。ういビームの音源を発見したら
           </p>
           <a
-            href={"https://github.com/maamokun/uibeam/issues/new?title=ういビーム音源提供"}
+            href={"https://github.com/mikndotdev/super-uibeam/issues/new?title=ういビーム音源提供"}
             rel={"nofollow noopener"}
             target={"_blank"}
           >

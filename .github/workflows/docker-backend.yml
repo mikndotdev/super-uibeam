@@ -3,6 +3,8 @@ name: Build and Push Docker Image (Backend)
 on:
   workflow_dispatch:
   push:
+    paths:
+      - "apps/backend/**"
     branches:
       - main
 
