@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "private": true,
+  "type": "module",
+  "module": "src/index.ts",
+  "scripts": {
+    "dev": "bun run --watch .",
+    "build": "bun build --compile src/index.ts --outfile bin"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

@@ -1,14 +1,19 @@
 {
   "name": "super-uibeam",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "oxfmt",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "oxfmt": "^0.35.0",
     "prettier": "^3.7.4",
     "turbo": "^2.8.11",
     "typescript": "5.9.2"
@@ -16,9 +21,5 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "bun@1.3.1",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "packageManager": "bun@1.3.1"
 }
