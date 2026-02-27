@@ -1,4 +1,4 @@
-name: Build and Push Docker Image (Backend)
+name: Build and Push Docker Image (Frontend)
 
 on:
   push:
@@ -32,11 +32,11 @@ jobs:
         with:
           platforms: linux/amd64
           context: .
-          file: ./backend.Dockerfile
+          file: ./frontend.Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}-backend:latest-amd
-            ghcr.io/${{ github.repository }}-backend:${{ github.sha }}-amd
+            ghcr.io/${{ github.repository }}-frontend:latest-amd
+            ghcr.io/${{ github.repository }}-frontend:${{ github.sha }}-amd
 
   build-arm64:
     runs-on: runs-on=${{ github.run_id }}/runner=4cpu-linux-arm64
@@ -60,11 +60,11 @@ jobs:
         with:
           platforms: linux/arm64
           context: .
-          file: ./backend.Dockerfile
+          file: ./frontend.Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}-backend:latest-arm
-            ghcr.io/${{ github.repository }}-backend:${{ github.sha }}-arm
+            ghcr.io/${{ github.repository }}-frontend:latest-arm
+            ghcr.io/${{ github.repository }}-frontend:${{ github.sha }}-arm
 
   build-merge:
     runs-on: ubuntu-latest
