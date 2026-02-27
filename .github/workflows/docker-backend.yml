@@ -32,6 +32,7 @@ jobs:
         with:
           platforms: linux/amd64
           context: .
+          file: ./backend.Dockerfile
           push: true
           tags: |
             ghcr.io/${{ github.repository }}:latest-amd
@@ -59,6 +60,7 @@ jobs:
         with:
           platforms: linux/arm64
           context: .
+          file: ./backend.Dockerfile
           push: true
           tags: |
             ghcr.io/${{ github.repository }}:latest-arm
