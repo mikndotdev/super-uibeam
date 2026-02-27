@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-    const wsUrl = `${protocol}//${import.meta.env.VITE_BACKEND_URL}`;
+    const wsUrl = `${protocol}//${window.location.host}/realtime`;
     const socket = new WebSocket(wsUrl);
     socketRef.current = socket;
 
